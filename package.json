@@ -1,7 +1,7 @@
 {
   "name": "lyrics",
   "version": "0.0.1",
-  "description": "A program written with ts to find lyrics and music lyrics",
+  "description": "A program written with ts to find lyrics and music lyrics.",
   "main": "app.js",
   "scripts": {
     "test": "go sharam-sabpare"
