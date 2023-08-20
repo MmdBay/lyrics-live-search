@@ -1,0 +1,45 @@
+doctype html
+html(lang="en")
+  head
+    title Live Search Lyrics
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(charset="utf-8")
+    link(rel="stylesheet" href="style.css")
+    link(rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+  body
+    div#main-audio
+    span#loadingIndicator
+    div#particles-js
+    #container
+      div.title-lyric
+        h1.bg Live Search Lyrics
+        h1.fg Live Search Lyrics
+      div.webflow-style-input
+        input#searchInput(type="text" placeholder="What Music Are You Looking For?")
+      div#resultsContainer
+      script(src="index.js")
+      script(src="particles.min.js")
+      script(src="background.js")
+      script(src="plyr.js")
+      script.
+        function createPlyr(element) {
+          const player = new Plyr(element);
+        }
+
+        function checkForNewPlayerElements() {
+          const playerElements = document.querySelectorAll('#player');
+          playerElements.forEach((element) => {
+            if (!element.classList.contains('plyr-initialized')) {
+              createPlyr(element);
+            }
+          });
+        }
+        const observer = new MutationObserver((mutationsList) => {
+          for (const mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+              checkForNewPlayerElements();
+            }
+          }
+        });
+        observer.observe(document.body, { childList: true, subtree: true });

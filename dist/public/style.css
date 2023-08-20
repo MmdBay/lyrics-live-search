@@ -1,0 +1,333 @@
+input {
+  font-family: inherit;
+}
+
+@font-face {
+  font-family: en;
+  src: url('./fonts/LuckiestGuy-Regular.ttf');
+}
+
+@font-face {
+  font-family: fa;
+  src: url('./fonts/IRANSansXFaNum-Light.ttf');
+}
+
+body {
+  line-height: 1;
+  background-color: rgb(0, 0, 0);
+  font-family: fa;
+}
+
+#container {
+  width: 95vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 90px auto;
+}
+
+:root {
+  --gold: #3845ff;
+  --light-shadow: #1d4777;
+  --dark-shadow: #041b3e;
+  --plyr-color-main: rgb(238, 255, 0);
+  --plyr-control-icon-size: 18px;
+  --plyr-audio-controls-background: #041b3e;
+  --plyr-audio-control-color: rgb(255, 174, 0);
+}
+
+.not-response {
+  text-align: center;
+  margin: 30px auto;
+  font-size: 22px;
+  color: #57E6E6;
+  font-family: en;
+  letter-spacing: 3px;
+}
+
+#container .title-lyric {
+  position: absolute;
+  top: 0;
+  z-index: 9999;
+  width: 100%;
+  background: radial-gradient(rgba(14, 33, 102, 0.8), rgba(0, 0, 0, 0.8));
+  display: grid;
+  grid-template-areas: 'overlap';
+  place-content: center;
+  text-transform: uppercase;
+  font-family: en;
+}
+
+#container .title-lyric>h1 {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #363833;
+  font-weight: 900;
+  margin: 20px 0;
+  font-size: 30px;
+  text-align: center;
+  grid-area: overlap;
+  letter-spacing: 2px;
+  line-height: 150%;
+  -webkit-text-stroke: 4px transparent;
+}
+
+#container .title-lyric>h1.bg {
+  background-image: repeating-linear-gradient(105deg,
+      var(--gold) 0%,
+      var(--dark-shadow) 5%,
+      var(--gold) 12%);
+  color: transparent;
+  filter: drop-shadow(5px 15px 15px black);
+  transform: scaleY(1.05);
+  transform-origin: top;
+}
+
+#container .title-lyric>h1.fg {
+  background-image: repeating-linear-gradient(5deg,
+      var(--gold) 0%,
+      var(--light-shadow) 23%,
+      var(--gold) 31%);
+  color: #1e2127;
+  transform: scale(1);
+}
+
+#container .webflow-style-input {
+  position: relative;
+  top: 30px;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  background-color: rgba(57, 63, 84, 0.8);
+  border-radius: 5px;
+}
+
+#container .webflow-style-input #searchInput::placeholder {
+  color: #a5def1;
+  font-size: 16px;
+  transition: .3s;
+}
+
+#container .webflow-style-input::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 999;
+  height: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-position: 0% 0%;
+  background: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6);
+  background-size: 500% auto;
+  animation: gradient 3s linear infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+#container .webflow-style-input #searchInput {
+  flex-grow: 1;
+  color: #BFD2FF;
+  background-color: rgba(57, 63, 84, 0.8);
+  width: 100%;
+  padding: 15px 4px;
+  font-size: 18px;
+  z-index: 99;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  line-height: 2.4rem;
+  vertical-align: middle;
+  margin: 0 auto;
+  transition: .5s ease-in-out;
+}
+
+#container .webflow-style-input #searchInput::-webkit-input-placeholder {
+  color: #a5def1;
+}
+
+#container .webflow-style-input #searchInput:focus::placeholder {
+  position: absolute;
+  top: 5px;
+  color: #a5def1;
+  font-size: 12px;
+}
+
+#container .webflow-style-input #searchInput:focus {
+  box-shadow: 0 0 40px #3845ff;
+}
+
+#container #resultsContainer {
+  width: 90%;
+  margin: 65px auto;
+  background-color: #23314294;
+  border-radius: 4px;
+  z-index: 99;
+}
+
+#container section {
+  background-color: rgba(0, 0, 0, 0.637);
+  margin: 4px;
+  z-index: 99;
+}
+
+#container .url-path {
+  display: block;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  z-index: 99;
+  cursor: pointer;
+  padding: 4px;
+  margin: 4px;
+  line-height: 130%;
+  transition: .1s ease-in-out;
+}
+
+#container .url-path:hover {
+  color: #3845ff;
+  margin-left: 3px;
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 98;
+}
+
+#loadingIndicator {
+  position: absolute;
+  z-index: 99999;
+  top: 50%;
+  right: 35%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.title-song {
+  color: #fff;
+  text-align: center;
+  margin: 25px auto;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.tumb-nail {
+  display: block;
+  margin: 25px auto;
+  width: 95%;
+  border-radius: 10px;
+}
+
+#container .song-text {
+  line-height: 320%;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  text-align: center;
+}
+
+#main-audio {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 99999;
+  width: 100%;
+}
+
+@media screen and (min-width: 960px) {
+  .not-response {
+    font-size: 42px;
+  }
+
+  #container {
+    margin: 140px auto;
+  }
+
+  #container .title-lyric {
+    position: fixed;
+    width: 100%;
+    top: 0;
+  }
+
+  #container .title-lyric>h1 {
+    font-weight: 900;
+    font-size: 65px;
+    margin: 0;
+  }
+
+  #container .webflow-style-input #searchInput::placeholder {
+    font-size: 18px;
+  }
+
+  #container .webflow-style-input #searchInput {
+    padding: 20px 8px;
+    font-size: 18px;
+  }
+
+  #container .webflow-style-input #searchInput:focus::placeholder {
+    font-size: 14px;
+  }
+
+  #container .url-path {
+    font-size: 22px;
+    padding: 8px;
+    margin: 8px;
+    line-height: 130%;
+  }
+
+  #loadingIndicator {
+    right: 50%;
+  }
+
+  .title-song {
+    font-size: 34px;
+  }
+
+  .tumb-nail {
+    display: block;
+    margin: 25px auto;
+    width: 50%;
+    border-radius: 10px;
+  }
+
+  #container .song-text {
+    line-height: 230%;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    text-align: center;
+  }
+}
