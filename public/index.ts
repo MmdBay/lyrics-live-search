@@ -113,24 +113,23 @@ function showUrlInformation(url: string): void {
         const section: HTMLElement = document.createElement('section');
         const songText: HTMLElement = document.createElement('p');
         const title: HTMLElement = document.createElement('h3');
-        const thumbNail: HTMLImageElement = document.createElement('img');
-        const song: HTMLAudioElement = document.createElement('audio');
-        const audioElement: HTMLSourceElement = document.createElement('source');
+        const video: HTMLElement = document.createElement('article');
 
         title.className = 'title-song';
         title.textContent = data.data.musicData.fulltitle;
 
-        thumbNail.className = 'tumb-nail';
-        thumbNail.src = data.data.lastHouseWithDimensions.url;
+        video.className = 'video';
 
-        song.setAttribute('id', 'player');
-        song.controls = true;
-        audioElement.setAttribute('src', data.data.bestAudioFormat.url);
-        audioElement.setAttribute('type', 'audio/webm');
+        if (video) {
+          const lastVideoWithAudio: string | undefined = data.data.videoWithAudio ? data.data.videoWithAudio[data.data.videoWithAudio.length - 1].url : undefined;
+          
+          video.innerHTML = `<video id="player" playsinline controls data-poster="${data.data.lastHouseWithDimensions.url}">
+          <source src="${lastVideoWithAudio}" type="video/mp4" />
+          </video>`
+        }
 
-        song.appendChild(audioElement);
         resultsContainer.appendChild(title);
-        resultsContainer.appendChild(thumbNail);
+        resultsContainer.appendChild(video);
 
         if (mainAudio) {
           mainAudio.innerHTML = `<audio id="player" controls>

@@ -67,6 +67,13 @@ function extactLyrics(url) {
                 return false;
             })
                 .sort((a, b) => b.filesize - a.filesize)[0];
+            const videoWithAudio = musicData.formats.filter((item) => {
+                if (item.acodec !== 'none' && item.vcodec !== 'none') {
+                    return true;
+                }
+                return false;
+            });
+            console.log(videoWithAudio);
             let lastHouseWithDimensions = null;
             for (let i = 0; i < musicData.thumbnails.length; i++) {
                 const thumbnail = musicData.thumbnails[i];
@@ -74,7 +81,7 @@ function extactLyrics(url) {
                     lastHouseWithDimensions = thumbnail;
                 }
             }
-            return { textLyric, bestAudioFormat, lastHouseWithDimensions, musicData };
+            return { textLyric, bestAudioFormat, lastHouseWithDimensions, musicData, videoWithAudio };
         }
         catch (error) {
             console.error(error);

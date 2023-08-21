@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import cheerio from "cheerio";
 import yt from 'youtube-dl-exec'
 
@@ -53,6 +53,14 @@ export async function extactLyrics(url: string): Promise<any | undefined> {
         return false;
       })
       .sort((a, b) => b.filesize - a.filesize)[0];
+      
+      const videoWithAudio: [] | object = musicData.formats.filter((item) => {
+        if ((item as any).acodec !== 'none' && (item as any).vcodec !== 'none') {
+          return true;
+        }
+        return false;
+      })
+      console.log(videoWithAudio);
 
     let lastHouseWithDimensions: string | null | undefined | object = null;
     for (let i = 0; i < musicData.thumbnails.length; i++) {
@@ -62,7 +70,7 @@ export async function extactLyrics(url: string): Promise<any | undefined> {
       }
 
     }
-    return { textLyric, bestAudioFormat, lastHouseWithDimensions, musicData }
+    return { textLyric, bestAudioFormat, lastHouseWithDimensions, musicData, videoWithAudio }
   } catch (error) {
     console.error(error);
   }

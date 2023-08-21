@@ -246,7 +246,7 @@ body {
   font-weight: 400;
 }
 
-.tumb-nail {
+.video {
   display: block;
   margin: 25px auto;
   width: 95%;
@@ -317,10 +317,11 @@ body {
     font-size: 34px;
   }
 
-  .tumb-nail {
+  .video {
     display: block;
     margin: 25px auto;
-    width: 50%;
+    border-radius: 4px;
+    width: 80%;
     border-radius: 10px;
   }
 

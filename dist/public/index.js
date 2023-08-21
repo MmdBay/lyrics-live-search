@@ -91,20 +91,18 @@ function showUrlInformation(url) {
             const section = document.createElement('section');
             const songText = document.createElement('p');
             const title = document.createElement('h3');
-            const thumbNail = document.createElement('img');
-            const song = document.createElement('audio');
-            const audioElement = document.createElement('source');
+            const video = document.createElement('article');
             title.className = 'title-song';
             title.textContent = data.data.musicData.fulltitle;
-            thumbNail.className = 'tumb-nail';
-            thumbNail.src = data.data.lastHouseWithDimensions.url;
-            song.setAttribute('id', 'player');
-            song.controls = true;
-            audioElement.setAttribute('src', data.data.bestAudioFormat.url);
-            audioElement.setAttribute('type', 'audio/webm');
-            song.appendChild(audioElement);
+            video.className = 'video';
+            if (video) {
+                const lastVideoWithAudio = data.data.videoWithAudio ? data.data.videoWithAudio[data.data.videoWithAudio.length - 1].url : undefined;
+                video.innerHTML = `<video id="player" playsinline controls data-poster="${data.data.lastHouseWithDimensions.url}">
+          <source src="${lastVideoWithAudio}" type="video/mp4" />
+          </video>`;
+            }
             resultsContainer.appendChild(title);
-            resultsContainer.appendChild(thumbNail);
+            resultsContainer.appendChild(video);
             if (mainAudio) {
                 mainAudio.innerHTML = `<audio id="player" controls>
             <source src="${data.data.bestAudioFormat.url}" type="audio/mp3" />
