@@ -64,9 +64,9 @@ Start the server
 ## Screenshots
 
 ![App Screenshot](https://github.com/MmdBay/lyrics-live-search/blob/master/dist/screen-shot/1.PNG?raw=true)
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://github.com/MmdBay/lyrics-live-search/blob/master/dist/screen-shot/2.PNG?raw=true)
+![App Screenshot](https://github.com/MmdBay/lyrics-live-search/blob/master/dist/screen-shot/3.PNG?raw=true)
+![App Screenshot](https://github.com/MmdBay/lyrics-live-search/blob/master/dist/screen-shot/4.PNG?raw=true)
 
 
 ## 🔗 Contact Me
